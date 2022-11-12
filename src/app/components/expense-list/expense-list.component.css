@@ -1,0 +1,36 @@
+.th.tableCellStyle{
+    border-top:'1pt solid black';border-left:'1pt solid black';
+    border-right: '1pt solid black';
+    border-bottom: '1pt solid black';
+}
+.td.tableCellStyle{
+    border-top:'1pt solid black';
+    border-left:'1pt solid black';
+    border-right: '1pt solid black';
+    border-bottom: '1pt solid black';
+}
+table td {
+    
+    border-right: thin solid;
+
+}
+
+table td:first-child {
+    border-left: thin solid;
+}
+
+
+
+
+table th {
+    border-right: thin solid;
+}
+
+table th:first-child {
+    border-left: thin solid;
+}
+
+table tr{
+    border-top: thin solid; 
+    border-bottom: thin solid; 
+}

@@ -1,0 +1,57 @@
+
+<form name="entryForm" #form="ngForm" style="border:black; border-width:1px; border-style:outset; width:48%" class="container">
+    <br><br>
+    <table [cellPadding]="3" [cellSpacing]="3">
+        <tr>
+            <td [width]="30">
+                <label  for="amount" class="labels">Amount: </label>
+            </td>
+            <td>
+                <input type="number" name="amount" id="amount" [(ngModel)]="newExpenses.amount" #price="ngModel" required min="0" max="1000" formGroupName="amount">
+                <div *ngIf="price.invalid && (price.dirty || price.touched)">
+                    <div *ngIf="amt.get('price')?.hasError('required')">Amount is required.</div>
+                    <div *ngIf="price.errors?.['min']">Amount should be greater than zero.</div>
+                    <div *ngIf="price.errors?.['max']">Amount should not exceed 1000.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td [width]="30">
+                <label class="labels" for="desc">Description: </label>
+            </td>
+            <td>
+                <input type="text" name="description" id="description" [(ngModel)]="newExpenses.description" #name="ngModel" formGroupName="desc" required min="3">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <div *ngIf="descr.get('name')?.hasError('required')">Description is required.</div>
+                        <div *ngIf="name.errors?.['min']">Description should have minimum 3 characters.</div>
+                    </div>              
+            </td>
+        </tr>
+        <tr>
+            <td [width]="30">
+                <label class="labels" for="category">Category: </label>
+            </td>
+            <td>
+                <select  name="category" id="category" [(ngModel)]="newExpenses.category" #type="ngModel" required formGroupName="category">
+                    <option value="" >Select one…</option>
+                    <option value="Food">Food</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Entertainment">Entertainment</option>
+            
+                </select>
+                <div *ngIf="(type.invalid && (type.dirty||type.touched))  ">
+                    <div *ngIf="optionsCategory.get('type')?.hasError('required')">Select a category.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button (click)="addExpense()" type="submit" class="button" [disabled]="form.invalid">Add Expense</button>
+            </td>
+        </tr>
+    </table>
+    
+   <br><br>
+    
+</form>
